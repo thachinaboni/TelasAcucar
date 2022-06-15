@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>Dashboard Example</title>
+<style type="text/css">
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+iframe { border: none; }
+</style>
+<script type="text/javascript">
+var Dash = {
+    nextIndex: 0,
+
+    dashboards: [
+        {url: "https://app.powerbi.com/reportEmbed?reportId=1274a1e3-90e1-4dda-81ae-3b49a1a592f7&pageName=ReportSectionb41682039be9e7a9d89f&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time: 15},
+        {url: "https://app.powerbi.com/reportEmbed?reportId=1274a1e3-90e1-4dda-81ae-3b49a1a592f7&pageName=ReportSectiona67102b9c3ba071448dd&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time: 15},
+        {url: "https://app.powerbi.com/reportEmbed?reportId=e2faa380-51e5-438f-bde3-4c3205ca64de&pageName=ReportSection9ef1ab072309a6959d92&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time: 15},
+        {url: "https://app.powerbi.com/reportEmbed?reportId=5c6ff548-74eb-4f51-b8f6-a931d2882a6f&pageName=ReportSection1160831170e596176334&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time:15},
+        {url: "https://app.powerbi.com/reportEmbed?reportId=5c6ff548-74eb-4f51-b8f6-a931d2882a6f&pageName=ReportSection7a20e1c039250759b6d5&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time:15},
+        {url: "https://app.powerbi.com/reportEmbed?reportId=af463abe-396a-43a6-aff6-cf93b7fc1eb7&pageName=ReportSection176a24974e723fcc96bc&autoAuth=true&filterPaneEnabled=false&navContentPaneEnabled=false", time: 15},
+    ],
+
+
+    display: function()
+    {
+        var dashboard = Dash.dashboards[Dash.nextIndex];
+        frames["displayArea"].location.href = dashboard.url;
+        Dash.nextIndex = (Dash.nextIndex + 1) % Dash.dashboards.length;
+        setTimeout(Dash.display, dashboard.time * 1000);
+    }
+};
+
+window.onload = Dash.display;
+</script>
+</head>
+<body>
+<iframe name="displayArea" width="100%" height="100%"></iframe>
+</body>
+</html>
